@@ -1,6 +1,6 @@
 # Setting up ntopng community (nDPI, nprobe) on vyos 1.4 rolling
 
-I have this on here for my personal reference since it took me a while to figure it out. I also hope it might help someone on how to set up ntopng on vyos without wasting a ton of time like I did. I have tested this on the vyos1.4 rolling image and while I will not be documenting a vyos image installation or setup, there are a few basic stuff that needs to be set up on the vyos router before ntopng can be installed.
+I have this on here for my personal reference since it took me a while to figure it out, hoping it might help someone on how to set up ntopng on vyos without wasting a ton of time like I did. I have tested this on the vyos1.4 rolling image and while I will not be documenting a vyos image installation or setup, there are a few basic stuff that needs to be set up on the vyos router before ntopng can be installed.
 
 On the vyos router, log in with admin privileges and open a root user session:
 ```
