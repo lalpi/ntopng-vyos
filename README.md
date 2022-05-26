@@ -21,7 +21,7 @@ Run a quick update (no upgrade/install at this time)
 ```
 apt update
 ```
-Download the ntop repo installer from the packages.ntop.org site for the particular version of debian the vyos is based on and install it. This will add the repo for ntopng and associated tools and gpg keys. You have a choice of binaries for the nightly builds or the stable version. More info can be found at https://packages.ntop.org/
+Download the ntop repo installer from the packages.ntop.org site for the particular version of debian the vyos is based on and install it. This will add the repo for ntopng and associated tools and gpg keys to your vyos router. You have a choice of binaries for the nightly builds or the stable version and in my case, I have gone with the stable build. More info can be found at https://packages.ntop.org/
 ```
 wget https://packages.ntop.org/apt-stable/bullseye/all/apt-ntop-stable.deb
 apt install ./apt-ntop-stable.deb
@@ -31,7 +31,7 @@ You should see something like the following added to a newly created **/etc/apt/
 deb https://packages.ntop.org/apt-stable/1.4-rolling-202205190217/ x64/
 deb https://packages.ntop.org/apt-stable/1.4-rolling-202205190217/ all/
 ```
-The installer probably picks up the version from the **/etc/os-release** and since this is vyos but since we need debian sources and repo, replace the version in the URI's with whatever your current vyos is based on. In my case this is **bullseye**.
+The installer probably picks up the VERSION_ID from the **/etc/os-release** and since vyos uses its own custom version id in the os-release, replace the version in the URI's above with whatever debian version your vyos is based on. In my case this is **bullseye**.
 ```
 deb https://packages.ntop.org/apt-stable/bullseye/ x64/
 deb https://packages.ntop.org/apt-stable/bullseye/ all/
@@ -40,7 +40,7 @@ Run an update
 ```
 apt update
 ```
-Now you should good to follow the instructions on the ntop installation page for debian based systems as documented at https://packages.ntop.org/apt-stable/
+Now you should be good to follow the instructions on the ntop installation page for debian based systems as documented at https://packages.ntop.org/apt-stable/
 ```
 apt install pfring-dkms nprobe ntopng n2disk cento
 ```
@@ -50,11 +50,11 @@ apt install pfring-drivers-zc-dkms
 ```
 Just in case you're wondering if I did an **apt upgrade** - no, I did not do that in case it breaks something in my vyos installation and I am not ready to spend time on that right now.
 
-Set the ntopng service to autostart if not already
+Set the ntopng service to autostart if it is not already done as part of the installation.
 ```
 systemctl enable ntopng
 systemctl start ntopng
 ```
-I had a successful installation with the exact steps above and have ntopng running without any issues thus far. While I can hardly call myself an expert on vyos nor ntopng, I believe I am pretty much set to start learning now.
+I had a successful installation with the exact steps above and have ntopng running without any issues thus far. While I can hardly call myself an expert on vyos or ntopng, I believe I am pretty much set to start learning now and getting more hands on!
 
 Big thanks to the folks at [vyos](https://vyos.io/) and [ntop](https://www.ntop.org/) for making such amazing software available for everyone and for free!
