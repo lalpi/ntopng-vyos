@@ -48,6 +48,16 @@ You could optionally install the ZC drivers
 ```
 apt install pfring-drivers-zc-dkms
 ```
+These threw me an error and I am not quite sure what I be missing out on but it would seem pfring requires kernel headers to be available, which in my case was not and I am not ready to get into that just yet.
+```
+Setting up pfring-dkms (8.0.0.7466) ...
+Loading new pfring-8.0.0.7466 DKMS files...
+Building for 5.10.116-amd64-vyos
+Building for architecture amd64
+Module build for kernel 5.10.116-amd64-vyos was skipped since the
+kernel headers for this kernel does not seem to be installed.
+Created symlink /etc/systemd/system/multi-user.target.wants/pf_ring.service → /etc/systemd/system/pf_ring.service.
+```
 Just in case you're wondering if I did an **apt upgrade** - no, I did not do that in case it breaks something in my vyos installation and I am not ready to spend time on that right now.
 
 Set the ntopng service to autostart if it is not already done as part of the installation.
@@ -55,6 +65,11 @@ Set the ntopng service to autostart if it is not already done as part of the ins
 systemctl enable ntopng
 systemctl start ntopng
 ```
-I had a successful installation with the exact steps above and have ntopng running without any issues thus far. While I can hardly call myself an expert on vyos or ntopng, I believe I am pretty much set to start learning now and getting more hands on!
+I realised a little later that it was only showing me the lo interface in the drop down so I went ahead and made the changes in the /etc/ntopng/ntopng.conf file
+```
+-i=eth0
+-m=10.192.100.0/24
+```
+I followed the exact steps above and have ntopng running thus far and I will probably need to look into pfring later. While I can hardly call myself an expert on vyos or ntopng, I believe I am pretty much set to start learning now and getting more hands on!
 
 Big thanks to the folks at [vyos](https://vyos.io/) and [ntop](https://www.ntop.org/) for making such amazing software available for everyone and for free!
