@@ -57,6 +57,9 @@ Building for architecture amd64
 Module build for kernel 5.10.116-amd64-vyos was skipped since the
 kernel headers for this kernel does not seem to be installed.
 Created symlink /etc/systemd/system/multi-user.target.wants/pf_ring.service → /etc/systemd/system/pf_ring.service.
+Job for pf_ring.service failed because the control process exited with error code.
+See "systemctl status pf_ring.service" and "journalctl -xe" for details.
+Failure restarting pf_ring
 ```
 Just in case you're wondering if I did an **apt upgrade** - no, I did not do that in case it breaks something in my vyos installation and I am not ready to spend time on that right now.
 
